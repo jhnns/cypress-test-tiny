@@ -4,7 +4,7 @@
   "description": "Small project for quickly testing Cypress.io test runner",
   "scripts": {
     "cypress:run": "cypress run",
-    "cypress:open": "cypress open",
+    "cypress:open": "cross-env LANGUAGE='de-AT' LANG='de-AT' LC_ALL='de-AT' cypress open",
     "cypress:verify": "cypress verify",
     "cypress:version": "cypress version",
     "list-videos": "ls -l cypress/videos",
@@ -20,5 +20,9 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/cypress-io/cypress-test-tiny.git"
+  },
+  "dependencies": {
+    "cross-env": "^7.0.2",
+    "cypress": "^4.9.0"
   }
 }

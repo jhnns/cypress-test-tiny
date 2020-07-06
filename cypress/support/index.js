@@ -1,20 +1,11 @@
-// ***********************************************************
-// This example support/index.js is processed and
-// loaded automatically before your test files.
-//
-// This is a great place to put global configuration and
-// behavior that modifies Cypress.
-//
-// You can change the location of this file or turn off
-// automatically serving support files with the
-// 'supportFile' configuration option.
-//
-// You can read more here:
-// https://on.cypress.io/configuration
-// ***********************************************************
+const {locale} = new Intl.DateTimeFormat().resolvedOptions();
 
-// Import commands.js using ES2015 syntax:
-import './commands'
-
-// Alternatively you can use CommonJS syntax:
-// require('./commands')
+if (locale !== 'en-US') {
+    throw new Error(
+        `The test environment does not provide the expected locale setup: ${JSON.stringify(
+            {locale},
+            null,
+            '  ',
+        )}`,
+    );
+}

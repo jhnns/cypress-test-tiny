@@ -18,4 +18,15 @@
 module.exports = (on, config) => {
   // `on` is used to hook into various events Cypress emits
   // `config` is the resolved Cypress config
-}
+  on('before:browser:launch', (browser = {}, launchOptions) => {
+
+    if (browser.family === 'chromium' && browser.name !== 'electron') {
+      launchOptions.preferences.default["settings.language.preferred_languages"] = "de-AT"
+      launchOptions.preferences.default["intl.initial_locale"] = "de-AT"
+      // Whatever this is...
+      launchOptions.preferences.localState["variations_safe_seed_locale"] = "de-AT"
+    }
+    
+    return launchOptions
+  });
+};
